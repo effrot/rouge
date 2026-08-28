@@ -1,0 +1,2 @@
+import{describe,it}from'node:test';import assert from'node:assert/strict';import{makeWorld,tick,score,W,H}from'../src/engine.js';
+describe('auto rogue engine',()=>{it('creates a bounded playable dungeon',()=>{const s=makeWorld(7);assert.equal(s.grid.length,H);assert.equal(s.grid[0].length,W);assert.ok(s.enemies.length>8);assert.ok(s.loot.length>8)});it('autoplays deterministically without crashing',()=>{let s=makeWorld(42);for(let i=0;i<180&&!s.won&&!s.lost;i++)s=tick(s);assert.ok(s.player.turn>20);assert.ok(Number.isFinite(score(s)));assert.ok(s.log.length<=8)})});
