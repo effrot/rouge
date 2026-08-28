@@ -1,0 +1,1 @@
+Serve this directory with any static web server.
